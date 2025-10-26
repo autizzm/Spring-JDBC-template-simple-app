@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Batch operations
+    </title>
+</head>
+
+<body>
+<div th:each="person : ${peopleList}">
+    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.name + ', ' + person.age}">user</a>
+</div>
+<br/>
+<hr/>
+<a th:href="@{/test-batch-update/without}" style="margin: 10px">Ordinary update (x1000)</a>
+<br/>
+<a th:href="@{/test-batch-update/with}" style="margin: 10px">Batch update</a>
+<br/>
+<form th:method="DELETE" th:action="@{/test-batch-update/delete-test-people}">
+    <input type="submit" value="Delete test people"/>
+</form>
+
+<br/>
+<hr/>
+<a th:href="@{/people}" style="padding: 10px">Back</a>
+
+
+</body>
+</html>
